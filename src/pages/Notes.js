@@ -6,13 +6,17 @@ import {
   removeNote,
 } from "../redux/actions/noteActions";
 import { v4 as uuidv4 } from "uuid";
+import ColorPicker from "react-color-picker";
 
+import "react-color-picker/index.css";
 import styles from "../assets/css/notes.module.css";
 
 export default function Notes() {
   const [isFocused, setIsFocused] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("darkblue");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [showColorPicker, setShowColorPicker] = useState(false);
 
   const notes = useSelector((state) => state.allNotes.notes);
   const dispatch = useDispatch();
@@ -24,16 +28,25 @@ export default function Notes() {
         id: uuidv4(),
         title,
         text,
+        timestamp: Date.now(),
+        color: selectedColor,
       };
       dispatch(addNewNote(newNote));
       setTitle("");
       setText("");
+      setIsFocused(false);
     }
   };
 
   const handleRemove = (id) => {
     if (id && id !== "") {
       dispatch(removeNote(id));
+    }
+  };
+
+  const handleDrag = (color) => {
+    if (color && color !== "") {
+      setSelectedColor(color);
     }
   };
 
@@ -99,7 +112,30 @@ export default function Notes() {
             id="text"
           ></textarea>
         </div>
-        {isFocused && <button type="submit">Save</button>}
+        {isFocused && (
+          <div className={styles.form_bottom}>
+            <i
+              className="fas fa-palette"
+              onClick={() => setShowColorPicker(true)}
+            ></i>
+            {showColorPicker && (
+              <>
+                <ColorPicker
+                  value={selectedColor}
+                  onDrag={(color) => handleDrag(color)}
+                  className={styles.colorpicker}
+                />
+                <div
+                  className={styles.select_color}
+                  onClick={() => setShowColorPicker(false)}
+                >
+                  <i className="fas fa-check"></i>
+                </div>
+              </>
+            )}
+            <button type="submit">Save</button>
+          </div>
+        )}
       </form>
       {/* list notes */}
 
@@ -112,7 +148,10 @@ export default function Notes() {
               return (
                 <div className={styles.note_item} key={note.id}>
                   <span className={styles.top_info}></span>
-                  <div className={styles.note_card}>
+                  <div
+                    className={styles.note_card}
+                    style={{ background: note.color, borderColor: note.color }}
+                  >
                     <h3>{note.title}</h3>
                     <p>{note.text}</p>
                     <div className={styles.note_action}>

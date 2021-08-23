@@ -18,7 +18,10 @@ export default function Header() {
           <i className="fas fa-search"></i>
           <input type="text" name="search" placeholder="Search" />
         </div>
-        <div className={styels.action_options}>options</div>
+        <div className={styels.action_options}>
+          <i className="fas fa-redo"></i>
+          <i className="fas fa-cog"></i>
+        </div>
       </div>
     </header>
   );
