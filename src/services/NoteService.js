@@ -23,6 +23,15 @@ const NoteService = {
     const notes = LDB.get("notes");
     return notes ? JSON.parse(notes) : [];
   },
+  removeNote: (id) => {
+    let notes = LDB.get("notes");
+    if (notes) {
+      notes = JSON.parse(notes);
+      notes = notes.filter((note) => note.id !== id);
+      LDB.set("notes", JSON.stringify(notes));
+      return id;
+    }
+  },
 };
 
 export default NoteService;

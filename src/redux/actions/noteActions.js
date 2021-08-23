@@ -18,8 +18,9 @@ export const fetchNotes = () => {
 };
 
 export const removeNote = (id) => {
+  const response = NoteService.removeNote(id);
   return {
     type: NoteAction.REMOVE_NOTE,
-    payload: id,
+    payload: response,
   };
 };

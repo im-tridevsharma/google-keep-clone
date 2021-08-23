@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewNote, fetchNotes } from "../redux/actions/noteActions";
+import {
+  addNewNote,
+  fetchNotes,
+  removeNote,
+} from "../redux/actions/noteActions";
 import { v4 as uuidv4 } from "uuid";
 
 import styles from "../assets/css/notes.module.css";
@@ -24,6 +28,12 @@ export default function Notes() {
       dispatch(addNewNote(newNote));
       setTitle("");
       setText("");
+    }
+  };
+
+  const handleRemove = (id) => {
+    if (id && id !== "") {
+      dispatch(removeNote(id));
     }
   };
 
@@ -105,6 +115,17 @@ export default function Notes() {
                   <div className={styles.note_card}>
                     <h3>{note.title}</h3>
                     <p>{note.text}</p>
+                    <div className={styles.note_action}>
+                      <div className={styles.note_action_options}>
+                        <i className="fas fa-bell" title="Remind me"></i>
+                        <i
+                          className="fas fa-trash-alt"
+                          title="Remove Note"
+                          onClick={() => handleRemove(note.id)}
+                        ></i>
+                        <i className="fas fa-archive" title="Archive Note"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );

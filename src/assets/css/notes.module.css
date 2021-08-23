@@ -105,3 +105,34 @@ textarea.focused::placeholder {
 .note_card p {
   margin: 8px 0px;
 }
+
+.note_action {
+  margin-top: 10px;
+  height: 30px;
+}
+
+.note_action_options {
+  display: none;
+}
+
+.note_card:hover .note_action_options {
+  display: flex;
+}
+
+.note_action i {
+  cursor: pointer;
+  color: gray;
+  font-size: 0.8rem;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.note_action i:hover {
+  color: lightgray;
+  background: rgb(51, 51, 51);
+}
