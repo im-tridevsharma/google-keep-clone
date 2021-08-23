@@ -1,0 +1,5 @@
+export const NoteAction = {
+  ADD_NEW_NOTE: "ADD_NEW_NOTE",
+  REMOVE_NOTE: "REMOVE_NOTE",
+  FETCH_NOTES: "FETCH_NOTES",
+};

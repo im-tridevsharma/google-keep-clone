@@ -1,0 +1,107 @@
+.notes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.notes__add_form {
+  position: relative;
+  top: 25px;
+  max-width: 600px;
+  width: 100%;
+  border: 1px solid rgb(77, 77, 77);
+  border-radius: 5px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  height: auto;
+}
+
+.form__group {
+  padding: 10px;
+  height: auto;
+  cursor: text;
+}
+
+.form__group input,
+.form__group textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+  overflow: hidden;
+  font-weight: 400;
+}
+
+.notes__add_form button {
+  float: right;
+  cursor: pointer;
+  margin: 10px;
+  background: transparent;
+  color: rgb(219, 219, 219);
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+  height: 15px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgb(167, 167, 167);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.collapse {
+  height: 15px;
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.focused,
+textarea.focused::placeholder {
+  font-size: 0.9rem;
+}
+
+.notes_list {
+  padding: 10px 0px;
+  margin-top: 50px;
+  position: relative;
+  color: rgb(235, 235, 235);
+  max-width: 600px;
+  width: 100%;
+}
+
+.note_item {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.note_card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.note_card h3 {
+  margin: 0;
+}
+
+.note_card p {
+  margin: 8px 0px;
+}
