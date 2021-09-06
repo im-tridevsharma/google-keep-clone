@@ -50,6 +50,11 @@
   font-weight: bold;
 }
 
+.form__group input,
+.form__group input::placeholder {
+  font-size: 1.3rem;
+}
+
 textarea {
   resize: none;
   height: 15px;
@@ -100,6 +105,7 @@ textarea.focused::placeholder {
 
 .note_card h3 {
   margin: 0;
+  font-size: 1.2rem;
 }
 
 .note_card p {
@@ -160,6 +166,7 @@ textarea.focused::placeholder {
   align-items: center;
   justify-content: center;
   margin: 3px 10px;
+  cursor: pointer;
 }
 
 .form_bottom i:hover {

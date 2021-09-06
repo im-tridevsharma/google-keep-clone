@@ -3,11 +3,12 @@ import React from "react";
 import styels from "../assets/css/header.module.css";
 import logo from "../assets/images/logo.png";
 
-export default function Header() {
+export default function Header({ onToggle, state }) {
+  console.log(state);
   return (
     <header>
       <div className={styels.header_wrapper}>
-        <div className={styels.nav_toggler}>
+        <div className={styels.nav_toggler} onClick={() => onToggle(!state)}>
           <i className="fas fa-bars"></i>
         </div>
         <div className={styels.app_name}>
